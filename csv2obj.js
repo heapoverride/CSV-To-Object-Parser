@@ -73,6 +73,10 @@ function csvToObject(text) {
                         cell = null;
                     } else if (!isNaN(cell)) {
                         cell = Number(cell);
+                    } else if (cell.toLowerCase == 'true') {
+                        cell = true;
+                    } else if (cell.toLowerCase == 'false') {
+                        cell = false;
                     }
                     
                     o[headers[k]] = cell;
