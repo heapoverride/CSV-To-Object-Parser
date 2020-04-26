@@ -75,4 +75,4 @@ function csv2obj(text) {
     return obj;
 }
 
-if (typeof(module) != 'undefined') module.exports = csvToObject;
+if (typeof(module) != 'undefined') module.exports = csv2obj;
