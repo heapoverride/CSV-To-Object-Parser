@@ -9,5 +9,5 @@ const csv2obj = require('./csv2obj.js');
 let csv = `"id", "username", "email"
 0, "HeapOverride", "arran.bishop89@aol.com"`;
 
-let obj = csvToObject(csv);
+let obj = csv2obj(csv);
 ```
