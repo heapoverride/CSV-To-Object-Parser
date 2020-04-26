@@ -1,12 +1,13 @@
 // Arran Bishop (@UnrealSec)
 // https://github.com/UnrealSecurity
 
-function csv2obj(text) {
+function csvToObject(text) {
     let lines = text.split(/\r|\n/);
     let obj = [];
     let headers = [];
 
     lines.forEach((line, j)=>{
+        line = line.trim();
         let state = 0;
         let temp = [];
         let row = [];
@@ -25,10 +26,14 @@ function csv2obj(text) {
                 }
             } else if (state == 1) {
                 if (c == '"') {
-                    state = 0;
-                    if (temp.length > 0) {
+                    if (line[i+1] == '"') {
+                        temp.push('"');
+                        i++;
+                    } else {
+                        state = 0;
                         row.push(temp.join(''));
                         temp = [];
+                        i++;
                     }
                 } else if (c == '\\' && (i==0 || (i > 0 && line[i-1] != '\\')) && i != line.length-1) {
                     let e = line[i+1];
@@ -49,6 +54,11 @@ function csv2obj(text) {
                     temp.push(c);
                 }
             }
+        }
+        
+        if (temp.length > 0) {
+            row.push(temp.join(''));
+            temp = [];
         }
         
         if (j == 0) {
@@ -75,4 +85,4 @@ function csv2obj(text) {
     return obj;
 }
 
-if (typeof(module) != 'undefined') module.exports = csv2obj;
+if (typeof(module) != 'undefined') module.exports = csvToObject;
