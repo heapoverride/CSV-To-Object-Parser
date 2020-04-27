@@ -1,7 +1,7 @@
 // Arran Bishop (@UnrealSec)
 // https://github.com/UnrealSecurity
 
-function csvToObject(text) {
+function csv2obj(text) {
     let lines = text.split(/\r|\n/);
     let obj = [];
     let headers = [];
