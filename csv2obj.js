@@ -58,7 +58,7 @@ function csv2obj(text) {
         }
         
         if (temp.length > 0) {
-            row.push(temp.join(''));
+            row.push(temp.join('').trim());
             temp = [];
         }
         
