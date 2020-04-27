@@ -17,9 +17,10 @@ function csv2obj(text) {
             
             if (state == 0) {
                 if (c == '"') {
+					temp = [];
                     state = 1;
                 } else if (c == ',') {
-                    row.push(temp.join(''));
+                    row.push(temp.join('').trim());
                     temp = [];
                 } else {
                     temp.push(c);
